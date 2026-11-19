@@ -10,7 +10,7 @@ import ListPage from "../../../components/common/ListPage";
 import OrderItemRow from "../../../components/common/OrderItemRow";
 import StatusBadge from "../../../components/common/StatusBadge";
 
-const API = "http://127.0.0.1:8000";
+const API = "";
 const REFRESH_MS = 5000; // refresh every 5 seconds
 
 const authHeader = () => ({

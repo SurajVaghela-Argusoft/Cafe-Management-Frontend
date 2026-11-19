@@ -20,7 +20,7 @@ const EmployeeAttendance = () => {
             // const token = localStorage.getItem("token");
             const token = Cookies.get("token");
             
-            const response = await axios.get("http://127.0.0.1:8000/admin/getallemployee", {
+            const response = await axios.get("/admin/getallemployee", {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setEmployees(response.data.data || []);
@@ -58,7 +58,7 @@ const EmployeeAttendance = () => {
             }
 
             const response = await axios.post(
-                "http://127.0.0.1:8000/admin/markattendance",
+                "/admin/markattendance",
                 payload,
                 {
                     headers: {

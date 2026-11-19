@@ -18,7 +18,7 @@ const AllOrders = () => {
     const getOrders = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get(`http://127.0.0.1:8000/admin/getorders`, {
+        const response = await axios.get(`/admin/getorders`, {
           headers: {
             "Authorization": `Bearer ${token}`
           }

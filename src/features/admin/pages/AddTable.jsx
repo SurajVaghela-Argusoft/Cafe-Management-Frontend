@@ -18,7 +18,7 @@ const AddTable = () => {
 
   const fetchTables = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/user/gettable");
+      const response = await axios.get("/user/gettable");
       setTables(response.data.data || response.data || []);
     } catch (err) {
       console.error("Error fetching tables:", err);
@@ -45,7 +45,7 @@ const AddTable = () => {
       const token = Cookies.get("token");
 
       await axios.post(
-        "http://127.0.0.1:8000/admin/addtable",
+        "/admin/addtable",
         {
           table_number: Number(tableNumber),
           capacity: Number(capacity)
@@ -78,7 +78,7 @@ const AddTable = () => {
       // const token = localStorage.getItem("token");
       const token = Cookies.get("token");
 
-      await axios.delete(`http://127.0.0.1:8000/admin/deletetable/${tbl.table_id}`, {
+      await axios.delete(`/admin/deletetable/${tbl.table_id}`, {
         headers: { "Authorization": `Bearer ${token}` }
       });
 

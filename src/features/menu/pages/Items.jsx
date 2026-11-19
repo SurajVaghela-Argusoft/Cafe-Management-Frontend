@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../../api";
 import EmptyState from "../../../components/common/EmptyState";
 import Panel from "../../../components/common/Panel";
 import ScrollArea from "../../../components/common/ScrollArea";
@@ -28,8 +29,8 @@ const Item = () => {
         setError("");
 
         const [categoriesResponse, itemsResponse] = await Promise.all([
-          axios.get("http://127.0.0.1:8000/food/getcategories"),
-          axios.get("http://127.0.0.1:8000/food/getitems")
+          axios.get("/food/getcategories"),
+          axios.get("/food/getitems")
         ]);
 
         setCategories(categoriesResponse.data.data || []);

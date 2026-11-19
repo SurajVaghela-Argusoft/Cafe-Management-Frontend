@@ -36,7 +36,7 @@ const CreateItem = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get("http://127.0.0.1:8000/food/getcategories");
+                const response = await axios.get("/food/getcategories");
                 setCategories(response.data.data || []);
             } catch (err) {
                 console.error("Error fetching categories:", err);
@@ -73,7 +73,7 @@ const CreateItem = () => {
 
     const handleToggle = async (item) => {
         try {
-            const response = await axios.patch(`http://127.0.0.1:8000/admin/toggleitem/${item.item_id}`);
+            const response = await axios.patch(`/admin/toggleitem/${item.item_id}`);
             setItemList(prev => prev.map(i => i.item_id === item.item_id ? response.data.data : i));
         } catch (err) {
             const errorMsg = err.response?.data?.detail || err.response?.data?.error?.message || "Could not update availability.";
@@ -88,7 +88,7 @@ const CreateItem = () => {
             // const token = localStorage.getItem("token");
             const token = Cookies.get("token");
 
-            await axios.delete(`http://127.0.0.1:8000/admin/deleteitem/${item.item_id}`, {
+            await axios.delete(`/admin/deleteitem/${item.item_id}`, {
                 headers: { "Authorization": `Bearer ${token}` }
             });
 
@@ -145,7 +145,7 @@ const CreateItem = () => {
 
             if (editMode) {
                 const response = await axios.patch(
-                    `http://127.0.0.1:8000/admin/updateitem/${editingItemId}`,
+                    `/admin/updateitem/${editingItemId}`,
                     payload,
                     { headers }
                 );
@@ -158,7 +158,7 @@ const CreateItem = () => {
                 handleCancelEdit();
             } else {
                 const response = await axios.post(
-                    "http://127.0.0.1:8000/admin/createitem",
+                    "/admin/createitem",
                     payload,
                     { headers }
                 );

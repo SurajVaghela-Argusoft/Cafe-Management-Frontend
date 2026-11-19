@@ -12,7 +12,7 @@ const Employee = () => {
         const getEmployees = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get(`http://127.0.0.1:8000/admin/getallemployee`, {
+                const response = await axios.get(`/admin/getallemployee`, {
                     headers: {
                         "Authorization": `Bearer ${token}`
                     }
@@ -33,7 +33,7 @@ const Employee = () => {
             setUpdatingId(emp.employee_id);
             const token = localStorage.getItem('token');
             const response = await axios.patch(
-                `http://127.0.0.1:8000/admin/toggleemployeestatus/${emp.employee_id}`,
+                `/admin/toggleemployeestatus/${emp.employee_id}`,
                 {},
                 { headers: { "Authorization": `Bearer ${token}` } }
             );

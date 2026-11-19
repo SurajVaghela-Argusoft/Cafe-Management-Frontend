@@ -21,7 +21,7 @@ const Order = () => {
       try {
         setLoading(true);
         const token = localStorage.getItem('token');
-        const response = await axios.get(`http://127.0.0.1:8000/customer/getcartbyid/${cartId}`, {
+        const response = await axios.get(`/customer/getcartbyid/${cartId}`, {
           headers: { "Authorization": `Bearer ${token}` }
         });
         setCartData(response.data.data || response.data);
@@ -45,7 +45,7 @@ const Order = () => {
   const placeOrder = async () => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`http://127.0.0.1:8000/customer/placeorder/${cartId}`, {}, {
+      await axios.post(`/customer/placeorder/${cartId}`, {}, {
         headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` }
       });
 

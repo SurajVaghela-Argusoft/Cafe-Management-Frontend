@@ -56,7 +56,7 @@ const Carts = () => {
         if (cart.length === 0) return;
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.post("http://127.0.0.1:8000/customer/createcart", { "items": cart }, {
+            const response = await axios.post("/customer/createcart", { "items": cart }, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`

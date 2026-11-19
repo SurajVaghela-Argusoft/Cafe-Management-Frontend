@@ -1,5 +1,6 @@
 import { useState } from "react";
-import axios from 'axios';
+// import axios from 'axios';
+import axios from "../../../api";
 import { Link, useNavigate } from "react-router-dom";
 import AuthCard from "../components/AuthCard";
 import AuthField from "../components/AuthField";
@@ -26,7 +27,7 @@ const Register = () => {
         };
 
         try {
-            const response = await axios.post("http://127.0.0.1:8000/user/", registerPayload, {
+            const response = await axios.post("/user/", registerPayload, {
                 headers: {
                     "Content-Type": "application/json"
                 },

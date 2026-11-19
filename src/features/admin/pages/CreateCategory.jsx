@@ -23,7 +23,7 @@ const CreateCategory = () => {
 
     const fetchCategories = async () => {
         try {
-            const response = await axios.get("http://127.0.0.1:8000/food/getcategories");
+            const response = await axios.get("/food/getcategories");
             const list = response.data?.data;
             setCategories(Array.isArray(list) ? list : []);
         } catch (err) {
@@ -37,7 +37,7 @@ const CreateCategory = () => {
 
     const handleToggle = async (cat) => {
         try {
-            await axios.patch(`http://127.0.0.1:8000/admin/togglecategory/${cat.category_id}`);
+            await axios.patch(`/admin/togglecategory/${cat.category_id}`);
             fetchCategories();
         } catch (err) {
             const errorMsg = err.response?.data?.detail || err.response?.data?.error?.message || "Could not update availability.";
@@ -81,7 +81,7 @@ const CreateCategory = () => {
 
             if (editMode) {
                 await axios.patch(
-                    `http://127.0.0.1:8000/admin/updatecategory/${editingCategoryId}`,
+                    `/admin/updatecategory/${editingCategoryId}`,
                     { category_name: categoryName, description: catdescription },
                     { headers }
                 );
@@ -91,7 +91,7 @@ const CreateCategory = () => {
                 fetchCategories();
             } else {
                 const response = await axios.post(
-                    "http://127.0.0.1:8000/admin/createcategory",
+                    "/admin/createcategory",
                     { category_name: categoryName, description: catdescription },
                     { headers }
                 );

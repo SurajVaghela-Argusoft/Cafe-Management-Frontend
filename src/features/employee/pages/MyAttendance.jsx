@@ -7,7 +7,7 @@ import ListPage from "../../../components/common/ListPage";
 import StatusBadge from "../../../components/common/StatusBadge";
 import Cookies from 'js-cookie'
 
-const API = "http://127.0.0.1:8000";
+const API = "";
 
 const authHeader = () => ({
   headers: { Authorization: `Bearer ${Cookies.get("token")}` },

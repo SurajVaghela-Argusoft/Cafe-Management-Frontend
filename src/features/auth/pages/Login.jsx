@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../../api";
 import { Link, useNavigate } from "react-router-dom";
 import { isLoggedInContext } from "../../../context/LoggedinContext";
 import { RoleContext, getRoleFromToken } from "../../../context/RoleContext";
@@ -24,7 +25,7 @@ const Login = () => {
         formData.append("password", password);
 
         try {
-            const response = await axios.post("http://127.0.0.1:8000/user/login", formData, {
+            const response = await axios.post("/user/login", formData, {
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
                 },

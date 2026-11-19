@@ -3,7 +3,8 @@ import { useContext } from "react";
 import { isLoggedInContext } from "../../context/LoggedinContext";
 import { RoleContext } from "../../context/RoleContext";
 import { ROLE_LINKS } from "../../constants/navLinks";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../api";
 const linkClass = "text-white-50 text-decoration-none p-1 link-light";
 import Cookies from 'js-cookie'
 
@@ -34,11 +35,13 @@ const Navbar = () => {
     const refresh = Cookies.get("refresh_token");
     try {
         if (refresh) {
-            await axios.post("http://127.0.0.1:8000/user/logout", { refresh_token: refresh });
+            await axios.post("/user/logout", { refresh_token: refresh });
         }
     } catch (err) {
         console.error(err); // log out locally even if this fails
     }
+    Cookies.remove("token");
+    Cookies.remove("refresh_token");
     localStorage.removeItem("token");
     localStorage.removeItem("refresh_token");
     localStorage.removeItem("role");
