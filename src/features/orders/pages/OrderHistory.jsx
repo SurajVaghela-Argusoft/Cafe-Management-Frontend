@@ -6,6 +6,8 @@ import IndexBadge from '../../../components/common/IndexBadge';
 import ListPage from '../../../components/common/ListPage';
 import StatusBadge from '../../../components/common/StatusBadge';
 import Cookies from 'js-cookie'
+import { useContext } from 'react';
+import { itemsContext } from '../../../context/ItemsContext';
 
 const OrderHistory = () => {
   const [orders, setOrders] = useState([]);
@@ -20,7 +22,7 @@ const OrderHistory = () => {
       setLoading(true);
       // const token = localStorage.getItem("token");
       const token = Cookies.get("token");
-      
+
 
       const response = await axios.get("/customer/getallorder", {
         headers: {
@@ -51,7 +53,7 @@ const OrderHistory = () => {
 
       // const token = localStorage.getItem("token");
       const token = Cookies.get("token");
-      
+
       const response = await axios.get(`/customer/getorderitembyid/${orderId}`, {
         headers: {
           "Authorization": `Bearer ${token}`
@@ -80,7 +82,8 @@ const OrderHistory = () => {
       />
     );
   }
-
+const dbitems = useContext(itemsContext) || [];
+const finditem = (id) => dbitems.find((d) => d.item_id === id) || null;
   return (
     <ListPage>
       <div className="col-12 mb-2">
@@ -140,7 +143,7 @@ const OrderHistory = () => {
                         <div key={item.ordr_item_id || iIdx} className="bg-light px-3 rounded-3 border-0 d-flex align-items-center justify-content-between text-dark small">
                           <div>
                             <span className="text-muted me-2 fw-medium">{iIdx + 1}.</span>
-                            <span className="fw-medium">Item Code: <strong className="text-dark">{item.item_id}</strong></span>
+                            <span className="fw-medium">Item Name: <strong className="text-dark">{finditem(item.item_id)?.item_name || "Unknown item"}</strong></span>                          
                           </div>
                           <div className="text-muted">
                             <span className="mx-2">Qty: <strong className="text-dark">{item.quantity}</strong></span>
