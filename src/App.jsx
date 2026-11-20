@@ -25,6 +25,7 @@ import AdminAttendance from './features/admin/pages/AdminAttendance.jsx';
 import ManageLeaves from './features/admin/pages/ManageLeaves.jsx';
 
 import ProtectedRoute from './components/common/ProtectedRoute.jsx';
+import AddEmployee from './features/admin/pages/AddEmployee.jsx';
 
 const App = () => {
   return (
@@ -68,6 +69,7 @@ const App = () => {
           <Route path='/allreservations' element={<AdminReservations />} />
           <Route path='/attendancereport' element={<AdminAttendance />} />
           <Route path='/manageleaves' element={<ManageLeaves />} />
+          <Route path='/addEmployee' element={<AddEmployee/>} />
         </Route>
       </Routes>
     </div>

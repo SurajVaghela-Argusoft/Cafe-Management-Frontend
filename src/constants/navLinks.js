@@ -6,11 +6,11 @@ export const ROLE_LINKS = {
     { to: "/cart", label: "Carts" }
   ],
   employee: [{ to: "/pendingorder", label: "Pending Orders" },
-        { to: "/myattendance", label: "My Attendance" },
-         { to: "/applyleave", label: "Leaves" },
+  { to: "/myattendance", label: "My Attendance" },
+  { to: "/applyleave", label: "Leaves" },
 
   ],
-  
+
   admin: [
     { to: "/allcustomer", label: "All Customer" },
     { to: "/allemployee", label: "All employee" },
@@ -20,7 +20,8 @@ export const ROLE_LINKS = {
     { to: "/addtable", label: "Add Table" },
     { to: "/empattendance", label: "Add Attendance" },
     { to: "/allreservations", label: "Reservations" },
-        { to: "/attendancereport", label: "Attendance Report" },   
-        {to:'/manageleaves', label:"Manage Leaves"}   
+    { to: "/attendancereport", label: "Attendance Report" },
+    { to: '/manageleaves', label: "Manage Leaves" },
+    { to: "/addemployee", label: "Add Employee" } 
   ],
 };

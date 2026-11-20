@@ -198,7 +198,13 @@ const CreateItem = () => {
                     ))}
                 </FormField>
                 <FormField label="Item Name:" id="itemName" type="text" value={itemName} onChange={(e) => setItemName(e.target.value)} placeholder="e.g. Cappuccino" disabled={loading} required />
-                <FormField label="Item Size:" id="itemSize" type="text" value={itemSize} onChange={(e) => setItemSize(e.target.value)} placeholder="e.g. Regular / Large" disabled={loading} required />
+                {/* <FormField label="Item Size:" id="itemSize" type="text" value={itemSize} onChange={(e) => setItemSize(e.target.value)} placeholder="e.g. Regular / Large" disabled={loading} required /> */}
+                <FormField as="select" label="Item Size:" id="itemSize" value={itemSize} onChange={(e) => setItemSize(e.target.value)} disabled={loading} required>
+                    <option value="">-- Choose a Size --</option>
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                </FormField>
                 <FormField label="Price Rs.:" id="price" type="number" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Enter amount" className="mb-4" disabled={loading} required />
 
                 <div className="d-flex flex-column gap-2">

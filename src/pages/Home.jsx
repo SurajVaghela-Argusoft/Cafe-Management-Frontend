@@ -21,7 +21,8 @@ const DESCRIPTIONS = {
   '/empattendance': 'Mark employee check-in and check-out',
   '/attendancereport': 'View attendance of all staff',
   '/allreservations': 'View and cancel table reservations',
-  '/manageleaves' : 'Get nd update status of leave'
+  '/manageleaves' : 'Get nd update status of leave',
+  '/addemployee' : 'Make employee of existing Customer'
 };
 
 const Home = () => {

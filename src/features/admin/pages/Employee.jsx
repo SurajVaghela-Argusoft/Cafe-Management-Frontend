@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import StatusBadge from "../../../components/common/StatusBadge";
 import axios from "../../../api";
+import EmptyState from "../../../components/common/EmptyState";
+
 
 const Employee = () => {
     const [employee, setEmployee] = useState([]);
@@ -69,7 +71,12 @@ const Employee = () => {
 
     const hasFilters = search.trim() !== "" || statusFilter !== "all";
 
-    if (employee.length === 0) { return <h2>No Employee Available</h2> }
+    if (employee.length === 0) { return(
+                <div className="col-12">
+                    <EmptyState variant="card" text="No Employee Found." />
+                </div>
+ )}
+ 
 
     return (
         <div className="container py-4 bg-secondary-subtle rounded-4 mt-3 px-4">

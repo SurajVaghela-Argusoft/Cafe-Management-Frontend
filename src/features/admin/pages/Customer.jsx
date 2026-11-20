@@ -4,6 +4,7 @@ import { itemsContext } from "../../../context/ItemsContext";
 import IndexBadge from "../../../components/common/IndexBadge";
 import ListPage from "../../../components/common/ListPage";
 import OrderItemRow from "../../../components/common/OrderItemRow";
+import EmptyState from "../../../components/common/EmptyState";
 
 const Customer = () => {
     const [customer, setCustomer] = useState([]);
@@ -53,7 +54,12 @@ const Customer = () => {
         (c.name || "").toLowerCase().includes(search.trim().toLowerCase())
     );
 
-    if (customer.length === 0) { return <h2>No Customer Available</h2> }
+    if (customer.length === 0) { return (
+                <div className="col-12">
+                    <EmptyState variant="card" text="No Customer Found." />
+                </div>
+ )}
+ 
 
     return (
         <ListPage>
